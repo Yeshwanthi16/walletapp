@@ -5,16 +5,20 @@ import {
   Routes,
 } from "react-router-dom";
 import Login from "./Page/Auth/Login";
+import Register from "./Page/Auth/register";
 
 function App() {
 
       // const history = createMemoryHistory();
       return (
         <Router>
-          <>
-            {/* {localStorage.getItem("token") ? <Dashboard /> : <Login />}    */}
-            <Login />
-          </>
+          <Routes>
+            <>
+              {/* {localStorage.getItem("token") ? <Dashboard /> : <Login />}    */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          </Routes>
         </Router>
       );
     }

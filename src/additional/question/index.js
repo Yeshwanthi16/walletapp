@@ -5,7 +5,7 @@ import {
 } from "./styles";
 import { Link } from "react-router-dom";
 
-export const QuestionLink = ({ question, linkName, path }) => {
+export const Question = ({ question, linkName, path }) => {
   return (
     <StyledWrapper>
       <StyledLeftContainer>{question}</StyledLeftContainer>

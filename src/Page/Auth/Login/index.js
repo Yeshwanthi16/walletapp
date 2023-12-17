@@ -9,7 +9,6 @@ import {
   InputAdornment,
   InputLabel,
   FilledInput,
-  OutlinedInput,
   TextField,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -18,9 +17,8 @@ import {
   StyledBoxContainer,
   StyledPageContainer,
 } from "../Styles";
-import { QuestionLink } from "../../../components/questionLink";
-
-// import { REACT_APP_API } from "../../../constants";
+import { Question } from "../../../additional/question";
+import { REACT_APP_API } from "../../../constants";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,8 +29,26 @@ function Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
+    if (!(email === "" || password === "")) {
+      e.preventDefault();
+      try {
+        const response = await axios.post(`${REACT_APP_API}/login`, {
+          email,
+          password,
+        });
+        console.log("RESPONSE", response);
+        localStorage.setItem("token", JSON.stringify(response.data));
+        navigate("/dashboard");
+        dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+        setUser(true);
+      } catch (error) {
+        setUser(false);
+      }
+    }
   }
 
   return (
@@ -69,17 +85,13 @@ function Login() {
               }
             />
           </FormControl>
-          <StyledButton type="submit">Login</StyledButton>
-          <QuestionLink
+          <StyledButton type="submit">Submit</StyledButton>
+          <Question
             question="Don't have an account?"
             linkName="Register"
             path={"/register"}
           />
-          {!user && (
-            <Alert severity="error" id="error">
-              Invalid credentials
-            </Alert>
-          )}
+          {!user && <Alert severity="error">Invalid credentials</Alert>}
         </StyledBoxContainer>
       </form>
     </StyledPageContainer>
