@@ -10,10 +10,12 @@ function App() {
 
       // const history = createMemoryHistory();
       return (
-        <>
-        {/* {localStorage.getItem("token") ? <Dashboard /> : <Login />}    */}
-        <Login />
-        </>
+        <Router>
+          <>
+            {/* {localStorage.getItem("token") ? <Dashboard /> : <Login />}    */}
+            <Login />
+          </>
+        </Router>
       );
     }
 

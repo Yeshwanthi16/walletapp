@@ -19,6 +19,7 @@ import {
   StyledPageContainer,
 } from "../Styles";
 import { QuestionLink } from "../../../components/questionLink";
+
 // import { REACT_APP_API } from "../../../constants";
 
 function Login() {
@@ -31,9 +32,12 @@ function Login() {
     event.preventDefault();
   };
 
+  const handleSubmit = async (e) => {
+  }
+
   return (
     <StyledPageContainer>
-      <form>
+      <form onSubmit={handleSubmit}>
         <StyledBoxContainer>
           <h1>Log in</h1>
           <TextField
@@ -66,11 +70,11 @@ function Login() {
             />
           </FormControl>
           <StyledButton type="submit">Login</StyledButton>
-          {/* <QuestionLink
+          <QuestionLink
             question="Don't have an account?"
             linkName="Register"
             path={"/register"}
-          /> */}
+          />
           {!user && (
             <Alert severity="error" id="error">
               Invalid credentials
