@@ -23,11 +23,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import SendIcon from "@mui/icons-material/Send";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ViewListIcon from "@mui/icons-material/ViewList";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import { useTheme } from "@mui/material";
 
-// import { Transfer, Recharge, Statement, Cashback, Profile } from "../index";
+import { Recharge, Transfer } from "../index";
 import { AppBar, Drawer, DrawerHeader } from "./styles";
 import { REACT_APP_API } from "../../constants";
 
@@ -44,13 +44,23 @@ const attributes = [
   },
   {
     title: "Statement",
-    icon: <MenuBookIcon />,
+    icon: <ViewListIcon />,
     option: "statement",
   },
   {
     title: "Cashbacks",
     icon: <CardGiftcardIcon />,
     option: "cashback",
+  },
+  {
+    title: "Account",
+    icon: <AccountCircleIcon />,
+    option: "account",
+  },
+  {
+    title: "Logout",
+    icon: <LogoutIcon />,
+    option: "logout",
   },
 ];
 
@@ -70,7 +80,7 @@ export default function Dashboard() {
     //    <CssBaseline />
     //    <AppBar position="fixed" open={open}></AppBar>
     //  </Box>
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -98,19 +108,18 @@ export default function Dashboard() {
             )}
           </IconButton>
         </DrawerHeader>
-        {/* <Divider /> */}
+        <Divider />
         <List>
           {attributes.map((item) => {
             return (
-              // <ListItem
-              //   key={item.title}
-              //   disablePadding
-              //   sx={{ display: "block" }}
-              //   onClick={() => setSelectedOption(item?.option)}
-              // >
+              <ListItem
+                key={item.title}
+                disablePadding
+                sx={{ display: "block" }}
+                onClick={() => setSelectedOption(item?.option)}
+              >
                 <ListItemButton
                   sx={{
-                    minHeight: 48,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
                   }}
@@ -129,12 +138,20 @@ export default function Dashboard() {
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>
-              // </ListItem>
+              </ListItem>
             );
           })}
         </List>
         <Divider />
       </Drawer>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        {selectedOption === "recharge" && <Recharge />}
+        {selectedOption === "transfer" && <Transfer />}
+        {/* {selectedOption === "statement" && <Statement />}
+        {selectedOption === "cashback" && <Cashback />}
+        {selectedOption === "profile" && <Profile />} */}
+      </Box>
     </Box>
   );
 }
