@@ -11,12 +11,12 @@ export const StyledContainer = styled.div`
   padding: 40px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   flex-direction: column;
-  gap: 24px;
+  gap: 45x;
 `;
 export const StyledInputFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 45px;
 `;
 export const StyledButtonContainer = styled.div`
   display: flex;

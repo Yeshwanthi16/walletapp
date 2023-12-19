@@ -23,7 +23,7 @@ import { REACT_APP_API } from "../../constants";
       {/* <div data-testid="current-balance"> */}
         <h3 title="balance-field">Current Balance : ₹</h3>
       {/* </div> */}
-      {/* <StyledInputFieldContainer> */}
+      <StyledInputFieldContainer>
         <TextField
           id="filled-basic"
           label="₹ Amount"
@@ -46,7 +46,7 @@ import { REACT_APP_API } from "../../constants";
             Submit
           </Button>
         </StyledButtonContainer>
-      {/* </StyledInputFieldContainer> */}
+      </StyledInputFieldContainer>
       {snackbarMessage === "Wallet recharged successfully with cashback" ? (
         <Snackbar
           open={snackbarOpen}
