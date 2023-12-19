@@ -27,7 +27,7 @@ import ViewListIcon from "@mui/icons-material/ViewList";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import { useTheme } from "@mui/material";
 
-import { Recharge, Transfer } from "../index";
+import { Recharge, Transfer, Statement, Cashback, Profile } from "../index";
 import { AppBar, Drawer, DrawerHeader } from "./styles";
 import { REACT_APP_API } from "../../constants";
 
@@ -53,7 +53,7 @@ const attributes = [
     option: "cashback",
   },
   {
-    title: "Account",
+    title: "Profile",
     icon: <AccountCircleIcon />,
     option: "account",
   },
@@ -100,6 +100,13 @@ export default function Dashboard() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ color: "green", position: "sticky" }}
+          >
+            Menu
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -148,9 +155,9 @@ export default function Dashboard() {
         <DrawerHeader />
         {selectedOption === "recharge" && <Recharge />}
         {selectedOption === "transfer" && <Transfer />}
-        {/* {selectedOption === "statement" && <Statement />}
+        {selectedOption === "statement" && <Statement />}
         {selectedOption === "cashback" && <Cashback />}
-        {selectedOption === "profile" && <Profile />} */}
+        {selectedOption === "profile" && <Profile />}
       </Box>
     </Box>
   );

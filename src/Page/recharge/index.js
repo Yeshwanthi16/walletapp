@@ -19,12 +19,11 @@ import { REACT_APP_API } from "../../constants";
    const handleSnackbarClose = (event, reason) => {};
   return (
     <StyledContainer>
-      <h3>Recharge</h3>
-      <div data-testid="current-balance">
+      <h2>Recharge</h2>
+      {/* <div data-testid="current-balance"> */}
         <h3 title="balance-field">Current Balance : ₹</h3>
-      </div>
-
-      <StyledInputFieldContainer>
+      {/* </div> */}
+      {/* <StyledInputFieldContainer> */}
         <TextField
           id="filled-basic"
           label="₹ Amount"
@@ -47,7 +46,7 @@ import { REACT_APP_API } from "../../constants";
             Submit
           </Button>
         </StyledButtonContainer>
-      </StyledInputFieldContainer>
+      {/* </StyledInputFieldContainer> */}
       {snackbarMessage === "Wallet recharged successfully with cashback" ? (
         <Snackbar
           open={snackbarOpen}
