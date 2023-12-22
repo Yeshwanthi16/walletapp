@@ -10,18 +10,63 @@ import {
 } from "../Styles";
 import { REACT_APP_API } from "../../constants";
 
-
- export const Recharge = () => {
+export const Recharge = () => {
   const [amount, setAmount] = useState("");
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-   const handleSubmit = () => {}
-   const handleSnackbarClose = (event, reason) => {};
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+   const data = useSelector((state) => state.user);
+   console.log("USER", data);
+
+  const handleSubmit = () => {
+    const token = localStorage.getItem("token").replace(/"/g, "");
+    if (data?.email == undefined) data.email = "test@test.com";
+    const payload = { email: data?.email, amount: amount };
+    axios
+      .post(`${REACT_APP_API}/recharge`, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setSnackbarMessage(response.data.message);
+        setSnackbarOpen(true);
+        setAmount("");
+        axios
+          .post(`${REACT_APP_API}/data`, {
+            token: token,
+          })
+          .then((response) => {
+            dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+            console.log("response.data", response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            navigate("/login");
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        navigate("/login");
+      });
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
   return (
     <StyledContainer>
       <h2>Recharge</h2>
       {/* <div data-testid="current-balance"> */}
-        <h3 title="balance-field">Current Balance : ₹</h3>
+      <h3 title="balance-field">Current Balance : ₹</h3>
       {/* </div> */}
       <StyledInputFieldContainer>
         <TextField

@@ -68,6 +68,29 @@ export default function Dashboard() {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const [selectedOption, setSelectedOption] = useState("recharge");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage?.getItem("token").replace(/"/g, "");
+    if (token) {
+      setUser(token);
+
+      axios
+        .post(`${REACT_APP_API}/data`, {
+          token: token,
+        })
+        .then((response) => {
+          setUser(response.data);
+          dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+          navigate("/login");
+        });
+    } else {
+      navigate("/login");
+    }
+  }, []);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -75,6 +98,17 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    navigate("/login");
+    dispatch({ type: "LOGIN_FAILURE", payload: null });
+  };
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
   return (
     //  <Box sx={{ display: "flex" }}>
     //    <CssBaseline />

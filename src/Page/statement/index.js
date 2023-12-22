@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { StyledContainer, StyledPageContainer } from "../Styles";
-// import { TransactionItem } from "../../components/transactionItem";
+import { Transaction } from "../../components/transaction";
 
 export const Statement = () => {
     const data = useSelector((state) => state.user);
@@ -17,17 +17,17 @@ export const Statement = () => {
                 .map((item) => {
                   return (
                     <>
-                    {/* //   {(item.type === "Transfer" ||
-                    //     item.type === "Recharge") && (
-                    //     <TransactionItem
-                    //       id={item?.id}
-                    //       type={item?.type}
-                    //       amount={item?.amount?.toFixed(2)}
-                    //       date={item?.date}
-                    //       email={item?.email}
-                    //       key={item?.id}
-                    //     />
-                    //   )} */}
+                    //   {(item.type === "Transfer" ||
+                        item.type === "Recharge") && (
+                        <Transaction
+                          id={item?.id}
+                          type={item?.type}
+                          amount={item?.amount?.toFixed(2)}
+                          date={item?.date}
+                          email={item?.email}
+                          key={item?.id}
+                        />
+                      )}
                     </>
                   );
                 })}
