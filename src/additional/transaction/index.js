@@ -21,7 +21,7 @@ export const formatDate = (dateString) => {
   return date.toLocaleString("en-US", options);
 };
 
-export const TransactionItem = ({ type, amount, date, email, key }) => {
+export const Transaction = ({ type, amount, date, email, key }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);

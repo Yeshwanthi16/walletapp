@@ -123,7 +123,7 @@ function Register() {
             <InputLabel htmlFor="password2-input">Verify Password</InputLabel>
             <FilledInput
               id="password2-input"
-              type={showPassword ? "text" : "password"}
+              type={showPassword2 ? "text" : "password"}
               label="Verify Password"
               variant="filled"
               sx={{ width: "300px" }}

@@ -7,9 +7,8 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
+// import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
@@ -56,18 +55,14 @@ const attributes = [
     title: "Profile",
     icon: <AccountCircleIcon />,
     option: "account",
-  },
-  {
-    title: "Logout",
-    icon: <LogoutIcon />,
-    option: "logout",
-  },
+  }
 ];
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const [selectedOption, setSelectedOption] = useState("recharge");
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -184,6 +179,32 @@ export default function Dashboard() {
           })}
         </List>
         <Divider />
+        <List>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={handleLogout}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+        </List> 
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

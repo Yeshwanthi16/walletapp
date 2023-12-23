@@ -9,12 +9,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        <>
-          {/* {localStorage.getItem("token") ? <Dashboard /> : <Login />}    */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </>
+        <Route
+          path="/"
+          element={localStorage.getItem("token") ? <Dashboard /> : <Login />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

@@ -23,8 +23,10 @@ export const Recharge = () => {
 
   const handleSubmit = () => {
     const token = localStorage.getItem("token").replace(/"/g, "");
-    if (data?.email == undefined) data.email = "test@test.com";
-    const payload = { email: data?.email, amount: amount };
+    // if (data?.email == undefined) data.email = "test@test.com";
+    // const payload = { email: data?.email, amount: amount };
+    const updatedEmail = data?.email || "test@test.com";
+    const payload = { email: updatedEmail, amount: amount };
     axios
       .post(`${REACT_APP_API}/recharge`, payload, {
         headers: {
@@ -32,7 +34,7 @@ export const Recharge = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => {
+          .then((response) => {
         setSnackbarMessage(response.data.message);
         setSnackbarOpen(true);
         setAmount("");
@@ -66,7 +68,9 @@ export const Recharge = () => {
     <StyledContainer>
       <h2>Recharge</h2>
       {/* <div data-testid="current-balance"> */}
-      <h3 title="balance-field">Current Balance : ₹</h3>
+      <h3 title="balance-field">
+        Current Balance : ₹{data?.user?.walletBalance?.toFixed(2)}
+      </h3>
       {/* </div> */}
       <StyledInputFieldContainer>
         <TextField

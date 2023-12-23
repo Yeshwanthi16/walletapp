@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { StyledContainer, StyledPageContainer } from "../Styles";
-import { Transaction } from "../../components/transaction";
+import { Transaction } from "../../additional/transaction";
 
 export const Cashback = () => {
   const data = useSelector((state) => state.user);
