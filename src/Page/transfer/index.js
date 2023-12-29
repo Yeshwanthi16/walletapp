@@ -76,7 +76,7 @@ export const Transfer = () => {
       <h2>Transfer</h2>
       <h3>
         Current Balance{"    :     ₹ "}
-        {/* {data?.user?.walletBalance?.toFixed(2)} */}
+        {data?.user?.walletBalance?.toFixed(2)}
       </h3>
       <StyledInputFieldContainer>
         <TextField

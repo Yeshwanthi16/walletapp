@@ -212,7 +212,7 @@ export default function Dashboard() {
         {selectedOption === "transfer" && <Transfer />}
         {selectedOption === "statement" && <Statement />}
         {selectedOption === "cashback" && <Cashback />}
-        {selectedOption === "profile" && <Profile />}
+        {selectedOption === "account" && <Profile />}
       </Box>
     </Box>
   );

@@ -18,8 +18,8 @@ export const Recharge = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-   const data = useSelector((state) => state.user);
-   console.log("USER", data);
+  const data = useSelector((state) => state.user);
+  console.log("USER", data);
 
   const handleSubmit = () => {
     const token = localStorage.getItem("token").replace(/"/g, "");
@@ -34,7 +34,7 @@ export const Recharge = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-          .then((response) => {
+      .then((response) => {
         setSnackbarMessage(response.data.message);
         setSnackbarOpen(true);
         setAmount("");
