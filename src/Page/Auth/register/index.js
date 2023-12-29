@@ -102,6 +102,7 @@ function Register() {
               id="password-input"
               type={showPassword ? "text" : "password"}
               variant="filled"
+              label="Password"
               sx={{ width: "300px" }}
               onChange={(e) => setPassword(e.target.value)}
               value={password}

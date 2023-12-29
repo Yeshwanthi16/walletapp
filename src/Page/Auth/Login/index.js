@@ -70,6 +70,7 @@ function Login() {
             <FilledInput
               id="component-filled"
               sx={{ width: "500px" }}
+              label="Password"
               type={showPassword ? "text" : "password"}
               onChange={(e) => setPassword(e.target.value)}
               endAdornment={
