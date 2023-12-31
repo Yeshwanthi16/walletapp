@@ -67,7 +67,7 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
+  padding: theme.spacing(0.6, 0),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
