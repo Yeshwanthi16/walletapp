@@ -43,7 +43,7 @@ export const Transfer = () => {
         },
       })
       .then((response) => {
-        setSnackbarMessage(response.data.message);
+        setSnackbarMessage(response.data.response);
         setSnackbarOpen(true);
         axios
           .post(`${REACT_APP_API}/data`, {

@@ -35,7 +35,7 @@ export const Recharge = () => {
         },
       })
       .then((response) => {
-        setSnackbarMessage(response.data.message);
+        setSnackbarMessage(response.data.response);
         setSnackbarOpen(true);
         setAmount("");
         axios
