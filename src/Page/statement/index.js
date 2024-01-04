@@ -17,7 +17,7 @@ export const Statement = () => {
                 .map((item) => {
                   return (
                     <>
-                    //   {(item.type === "Transfer" ||
+                       {(item.type === "Transfer" ||
                         item.type === "Recharge") && (
                         <Transaction
                           id={item?.id}
