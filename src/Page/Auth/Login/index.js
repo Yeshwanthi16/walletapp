@@ -55,7 +55,7 @@ function Login() {
     <StyledPageContainer>
       <form onSubmit={handleSubmit}>
         <StyledBoxContainer>
-          <h1>Log in</h1>
+          <h1> Wallet Log in</h1>
           <TextField
             id="filled-basic"
             label="Mail ID"
