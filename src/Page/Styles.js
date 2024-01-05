@@ -6,12 +6,12 @@ export const StyledPageContainer = styled.div`
   gap: 18px;
 `;
 export const StyledContainer = styled.div`
-  display: flex;
+  display: grid;
   flex: 1;
-  padding: 40px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 50px;
   flex-direction: column;
   gap: 45x;
+  justify-content: center;
 `;
 export const StyledInputFieldContainer = styled.div`
   display: flex;
