@@ -6,7 +6,7 @@ export const Statement = () => {
     const data = useSelector((state) => state.user);
     return (
       <StyledContainer>
-        <h2>Transactions</h2>
+        <h1>Transactions</h1>
         <StyledPageContainer>
           {data?.transactions[0]?.transaction?.length < 1
             ? "No transactions"

@@ -20,7 +20,7 @@ export const StyledInputFieldContainer = styled.div`
 `;
 export const StyledButtonContainer = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: center;
 `;
 export const StyledProfileCard = styled.div`
   display: flex;

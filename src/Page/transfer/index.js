@@ -73,11 +73,11 @@ export const Transfer = () => {
 
   return (
     <StyledContainer>
-      <h2>Transfer</h2>
-      <h3>
+      <h1>Transfer</h1>
+      <h2>
         Current Balance{"    :     ₹ "}
         {data?.user?.walletBalance?.toFixed(2)}
-      </h3>
+      </h2>
       <StyledInputFieldContainer>
         <TextField
           id="to"

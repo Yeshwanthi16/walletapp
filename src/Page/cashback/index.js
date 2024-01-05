@@ -6,7 +6,7 @@ export const Cashback = () => {
   const data = useSelector((state) => state.user);
   return (
     <StyledContainer>
-      <h2>Cashback</h2>
+      <h1>Cashback</h1>
       <StyledPageContainer>
         {data?.transactions[0]?.transaction.length < 1
           ? "No transactions"

@@ -66,11 +66,11 @@ export const Recharge = () => {
 
   return (
     <StyledContainer>
-      <h2>Recharge</h2>
+      <h1>Recharge</h1>
       {/* <div data-testid="current-balance"> */}
-      <h3 title="balance-field">
+      <h2 title="balance-field">
         Current Balance : ₹{data?.user?.walletBalance?.toFixed(2)}
-      </h3>
+      </h2>
       {/* </div> */}
       <StyledInputFieldContainer>
         <TextField
