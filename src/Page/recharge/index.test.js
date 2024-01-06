@@ -65,7 +65,7 @@ describe("Recharge component", () => {
     process.env.REACT_APP_API = "http://localhost:8080/wallet";
 
     axios.post.mockResolvedValueOnce({
-      data: { message: "Recharge successful" },
+      data: { response: "Recharge successful" },
     });
     axios.post.mockResolvedValueOnce({
       data: { user: { walletBalance: 150 } },

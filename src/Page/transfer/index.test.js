@@ -93,7 +93,7 @@ describe("Transfer component", () => {
     const mockPost = jest.spyOn(axios, "post");
     mockPost.mockResolvedValue({
       data: {
-        message: "Transfer successful",
+        response: "Transfer successful",
         user: {
           walletBalance: 50,
         },
