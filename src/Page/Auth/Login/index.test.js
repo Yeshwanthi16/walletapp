@@ -16,9 +16,6 @@ describe("Login component", () => {
     store = mockStore({
       auth: {},
     });
-    history = {
-      push: jest.fn(),
-    };
     Object.defineProperty(window, "localStorage", {
       value: {
         setItem: jest.fn(() => null),
@@ -73,7 +70,7 @@ describe("Login component", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <Login history={history} />
+          <Login  />
         </MemoryRouter>
       </Provider>
     );
