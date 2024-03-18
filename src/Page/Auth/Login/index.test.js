@@ -10,7 +10,7 @@ jest.mock("axios");
 
 describe("Login component", () => {
   let store;
-  let history;
+  // let history;
 
   beforeEach(() => {
     store = mockStore({

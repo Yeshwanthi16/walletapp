@@ -19,7 +19,6 @@ export const Recharge = () => {
   const navigate = useNavigate();
 
   const data = useSelector((state) => state.user);
-  console.log("USER", data);
 
   const handleSubmit = () => {
     const token = localStorage.getItem("token").replace(/"/g, "");

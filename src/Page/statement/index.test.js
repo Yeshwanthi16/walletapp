@@ -23,7 +23,7 @@ describe("Statement", () => {
       </Provider>
     );
 
-    expect(screen.getByText("No transactions")).toBeInTheDocument();
+    expect(screen.getByText("No transactions")).toBeDefined();
   });
 
   it("displays transaction items when there are transactions", () => {

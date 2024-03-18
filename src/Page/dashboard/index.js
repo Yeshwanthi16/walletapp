@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
-// import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
@@ -17,7 +16,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -55,7 +53,7 @@ const attributes = [
     title: "Profile",
     icon: <AccountCircleIcon />,
     option: "account",
-  }
+  },
 ];
 
 export default function Dashboard() {
@@ -66,8 +64,11 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    const token = localStorage?.getItem("token").replace(/"/g, "");
-    if (token) {
+    // const token = localStorage?.getItem("token").replace(/"/g, "");
+    const tokenn = localStorage.getItem("token");
+    if (tokenn) {
+      // setUser(token);
+      const token = tokenn.replace(/"/g, "");
       setUser(token);
 
       axios
@@ -86,6 +87,7 @@ export default function Dashboard() {
       navigate("/login");
     }
   }, []);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -137,11 +139,11 @@ export default function Dashboard() {
             Menu
           </Typography>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {/* {theme.direction === "rtl" ? ( */}
+            {/* <ChevronRightIcon /> */}
+            {/* ) : ( */}
+            <ChevronLeftIcon />
+            {/* )} */}
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -204,7 +206,7 @@ export default function Dashboard() {
               <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-        </List> 
+        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

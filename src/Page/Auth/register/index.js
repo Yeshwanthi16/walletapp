@@ -21,45 +21,41 @@ import { REACT_APP_API } from "../../../constants";
 import { Question } from "../../../additional/question";
 
 function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const [userExist, setUserExist] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
   const checkPassword = (first, second) => first === second;
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!checkPassword(password, password2)) {
+    if (!checkPassword(formData.password, formData.password2)) {
       setNoMatch(true);
       return;
     }
 
-    if (
-      username === "" ||
-      email === "" ||
-      password === "" ||
-      password2 === ""
-    ) {
-      return;
-    }
-
     try {
-      const response = await axios.post(`${REACT_APP_API}/register`, {
-        username,
-        email,
-        password,
-      });
+      const response = await axios.post(`${REACT_APP_API}/register`, formData);
 
       if (response.data.status === "OK") {
         navigate("/login");
@@ -67,7 +63,7 @@ function Register() {
         setUserExist(true);
       }
     } catch (error) {
-      console.error("error", error);
+      console.log("error", error);
     }
   };
 
@@ -78,34 +74,37 @@ function Register() {
           <h1>Register</h1>
 
           <TextField
-            id="filled-basic"
+            id="filled-basic-username"
+            name="username"
             label="Username"
             variant="filled"
             sx={{ width: "300px" }}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleInputChange}
           />
 
           <TextField
-            id="filled-basic"
+            id="filled-basic-email"
             label="Email ID"
+            name="email"
             type="email"
             variant="filled"
             sx={{ width: "300px" }}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleInputChange}
           />
 
           <FormControl sx={{ width: "300px" }} variant="filled">
-            <InputLabel htmlFor="component-filled">Password</InputLabel>
+            <InputLabel htmlFor="password-input">Password</InputLabel>
             <FilledInput
               id="password-input"
+              name="password"
               type={showPassword ? "text" : "password"}
               variant="filled"
               label="Password"
               sx={{ width: "300px" }}
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
+              onChange={handleInputChange}
+              value={formData.password}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -124,16 +123,17 @@ function Register() {
             <InputLabel htmlFor="password2-input">Verify Password</InputLabel>
             <FilledInput
               id="password2-input"
+              name="password2"
               type={showPassword2 ? "text" : "password"}
               label="Verify Password"
               variant="filled"
               sx={{ width: "300px" }}
-              onChange={(e) => setPassword2(e.target.value)}
-              value={password2}
+              onChange={handleInputChange}
+              value={formData.password2}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
-                    onClick={handleClickShowPassword2}
+                    onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >

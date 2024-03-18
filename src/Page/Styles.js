@@ -8,7 +8,7 @@ export const StyledPageContainer = styled.div`
 export const StyledContainer = styled.div`
   display: grid;
   flex: 1;
-  padding: 50px;
+  padding: 20px;
   flex-direction: column;
   gap: 45x;
   justify-content: center;
@@ -26,6 +26,7 @@ export const StyledProfileCard = styled.div`
   display: flex;
   background: #ceefce;
   max-width: 400px;
+  width: 500px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -33,3 +34,7 @@ export const StyledProfileCard = styled.div`
   flex-direction: column;
   border-radius: 25px;
 `;
+
+export const StyledHeadingWrapper = styled.h3`
+font-size: 1.2rem;
+`

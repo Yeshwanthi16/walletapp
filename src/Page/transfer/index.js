@@ -34,7 +34,7 @@ export const Transfer = () => {
       setSnackbarOpen(true);
       return;
     }
-    const payload = { fromEmail: data?.email, toEmail: to, amount: amount };
+    const payload = { fromEmail: data.email, toEmail: to, amount: amount };
     axios
       .post(`${REACT_APP_API}/transfer`, payload, {
         headers: {
@@ -75,7 +75,8 @@ export const Transfer = () => {
     <StyledContainer>
       <h1>Transfer</h1>
       <h2>
-        Current Balance{"    :     ₹ "}
+        <span>Current Balance</span>
+        {"    :     ₹ "}
         {data?.user?.walletBalance?.toFixed(2)}
       </h2>
       <StyledInputFieldContainer>

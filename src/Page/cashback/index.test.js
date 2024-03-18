@@ -23,7 +23,7 @@ describe("Cashback", () => {
       </Provider>
     );
 
-    expect(screen.getByText("No transactions")).toBeInTheDocument();
+    expect(screen.getByText("No Cashbacks")).toBeInTheDocument();
   });
 
   it("displays only cashback transaction items when there are cashback transactions", () => {
@@ -64,7 +64,7 @@ describe("Cashback", () => {
       </Provider>
     );
 
-    expect(screen.queryByText("No transactions")).toBeNull();
+    expect(screen.queryByText("No Cashbacks")).toBeNull();
     expect(screen.queryByText("Transfer")).toBeNull();
     expect(screen.queryByText("Recharge")).toBeNull();
   });
