@@ -24,7 +24,7 @@ export const Recharge = () => {
     const token = localStorage.getItem("token").replace(/"/g, "");
     // if (data?.email == undefined) data.email = "test@test.com";
     // const payload = { email: data?.email, amount: amount };
-    const updatedEmail = data?.email || "test@test.com";
+    const updatedEmail = data?.email || "wallet@mail.com";
     const payload = { email: updatedEmail, amount: amount };
     axios
       .post(`${REACT_APP_API}/recharge`, payload, {

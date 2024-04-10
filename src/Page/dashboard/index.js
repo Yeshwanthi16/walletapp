@@ -58,7 +58,7 @@ const attributes = [
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
+  // const theme = useTheme();
   const [selectedOption, setSelectedOption] = useState("recharge");
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
